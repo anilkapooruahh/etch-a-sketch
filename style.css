@@ -1,0 +1,12 @@
+:root {
+  --grid-element-size: 39px;
+}
+
+.container {
+  display: grid;
+  grid-template-columns: repeat(16, var(--grid-element-size));
+  grid-template-rows: repeat(16, var(--grid-element-size));
+}
+.grid-element {
+  border: 1px black solid;
+}
