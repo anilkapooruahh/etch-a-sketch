@@ -3,6 +3,7 @@ const EDGE = 16
 const DIVS = EDGE * EDGE // 16 * 16
 const height = window.innerHeight
 let RAINBOW = false
+let ERASER = false
 
 const createRandomHex = () => Math.floor(Math.random() * 256)
 const createColorHex = () => `rgb(${createRandomHex()}, ${createRandomHex()}, ${createRandomHex()})`
@@ -11,21 +12,35 @@ const createColorHex = () => `rgb(${createRandomHex()}, ${createRandomHex()}, ${
 const handleMouseOver = (element) => {
     if (RAINBOW === true) {
         element.style.backgroundColor = createColorHex()
+    } else if(ERASER === true){
+        element.style.backgroundColor = "white"
     } else {
         element.style.backgroundColor = "black"
     }
 }
 
-rainbowButton = document.querySelector('button')
+const rainbowButton = document.querySelector('button.rainbow')
 const handleRainbowClick = () => { 
     if (RAINBOW === true) {
         RAINBOW = false
     } else {
         RAINBOW = true
+        ERASER = false
     }
 }
 rainbowButton.addEventListener('click', () => {handleRainbowClick()})
-rainbowButton.style.backgroundColor = 'blue'
+
+const eraserButton = document.querySelector('button.eraser')
+const handleEraserClick = () => {
+    if (ERASER === true) {
+        ERASER = false
+    } else {
+        RAINBOW = false
+        ERASER = true
+    }
+}
+eraserButton.addEventListener('click', () => {handleEraserClick()})
+
 // making the grid settings
 const body = document.querySelector('div.container')
 body.style.gridTemplateColumns = `repeat(${EDGE}, 1fr)`
