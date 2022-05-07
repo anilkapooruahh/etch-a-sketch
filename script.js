@@ -12,7 +12,7 @@ const handleMouseOver = (element) => {
     if (RAINBOW === true) {
         element.style.backgroundColor = createColorHex()
     } else {
-        element.classList.add('hover')
+        element.style.backgroundColor = "black"
     }
 }
 
